@@ -168,6 +168,52 @@ fun NameAgeApp() {
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(40.dp))
+
+        // Thông báo
+        if (message.isNotEmpty()) {
+            Text(
+                text = message,
+                color = messageColor,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+        }
+
+        // Nút kiểm tra
+        Button(
+            onClick = {
+                messageColor = Color(0xFF0853b0)
+                val trimmedName = name.trim()
+                val trimmedAge = age.trim()
+
+                when {
+                    trimmedName.isEmpty() -> message = "Vui lòng nhập họ và tên"
+                    trimmedAge.isEmpty() -> message = "Vui lòng nhập tuổi"
+                    else -> {
+                        val ageInt = trimmedAge.toIntOrNull()
+                        if (ageInt == null) {
+                            message = "Tuổi phải là số"
+                        } else if (ageInt < 0) {
+                            message = "Tuổi không hợp lệ"
+                        } else {
+                            messageColor = Color(0xFF2E7D32)
+                            val group = classifyAge(ageInt)
+                        }
+                    }
+                }
+            },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF1565C0)
+            ),
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .height(48.dp)
+        ) {
+            Text("Kiểm tra", fontSize = 20.sp, color = Color.White)
+        }
     }
 }
 
