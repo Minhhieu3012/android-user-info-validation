@@ -184,7 +184,7 @@ fun NameAgeApp() {
         // Nút kiểm tra
         Button(
             onClick = {
-                messageColor = Color(0xFF0853b0)
+                messageColor = Color.Red
                 val trimmedName = name.trim()
                 val trimmedAge = age.trim()
 
@@ -199,7 +199,7 @@ fun NameAgeApp() {
                             message = "Tuổi không hợp lệ"
                         } else {
                             messageColor = Color(0xFF2E7D32)
-                            val group = classifyAge(ageInt)
+                            message = classifyAge(ageInt)
                         }
                     }
                 }
