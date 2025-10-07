@@ -53,6 +53,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Hàm phân loại tuổi
 fun classifyAge(age: Int): String {
     return when {
         age > 65 -> "Người già (>65)"
@@ -65,6 +66,7 @@ fun classifyAge(age: Int): String {
 
 @Composable
 fun NameAgeApp() {
+    // Trạng thái của các biến
     var name by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
     var message by remember { mutableStateOf("") }
@@ -86,7 +88,7 @@ fun NameAgeApp() {
             modifier = Modifier.padding(bottom = 40.dp)
         )
 
-        // Khung chứa nhập liệu
+        // Khung chứa nhập họ tên và tuổi
         Box(
             modifier = Modifier
                 .fillMaxWidth()
